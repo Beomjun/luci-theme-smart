@@ -7,11 +7,15 @@
 	Have a bug? Please create an issue here on GitHub!
 	https://github.com/Beomjun/luci-theme-smart/issues
 
-	Licensed to the public under the GPL v3.0
+	Licensed to the public under the GNU GPL v3.0
 -%>
-<footer>
-    <div>
-    </div>
+
+<%
+	local version = require "luci.version"
+%>
+<footer class="footer">
+	<div>© 2025 Beomjun Kang. All Rights Reserved.</div>
 </footer>
+<script src="<%=media%>/js/script.js?v=<%= version.luciversion %>"></script>
 </body>
 </html>
