@@ -1,0 +1,19 @@
+{
+  "name": "Smart",
+  "short_name": "Smart",
+  "description": "Clean and neat, mobile-friendly LuCI theme for OpenWrt.",
+  "start_url": "/cgi-bin/luci/",
+  "scope": "/cgi-bin/luci/",
+  "display": "standalone",
+  "background_color": "#f3f4f6",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/luci-static/smart/favicon.ico",
+      "sizes": "16x16 24x24 32x32 48x48 64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}

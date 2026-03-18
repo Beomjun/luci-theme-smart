@@ -17,18 +17,87 @@
 	local node = dispatcher.context.dispatched
 
 	local boardInfo = util.ubus("system", "board")
+  local hostname = boardInfo.hostname or "OpenWrt"
+  local title = (node and node.title) and translate(node.title) or ""
+  http.prepare_content("text/html")
 
 	http.prepare_content("text/html")
 %>
 <!DOCTYPE html>
 <html lang="<%=luci.i18n.context.lang%>">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover" />
-	<title><%=striptags( (boardInfo.hostname or "?") .. ( (node and node.title) and ' - ' .. translate(node.title) or '')) %> - LuCI</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover" />
+  <title><%=striptags(hostname .. (title ~= "" and (" - " .. title) or "") .. " - LuCI")%></title>
 	<link rel="stylesheet" href="<%=media%>/css/style.css<%# ?v=PKG_VERSION %>">
 	<link rel="shortcut icon" href="<%=media%>/favicon.ico">
-    <link rel="manifest" href="<%=media%>/manifest.json">
+  <link rel="manifest" href="<%=media%>/manifest.json">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Smart">
 </head>
 
-<body>
+<body class="smart-body">
+  <div class="smart-layout" id="smart-layout">
+    <aside class="smart-sidebar" id="smart-sidebar">
+      <div class="smart-sidebar__inner">
+        <div class="smart-brand">
+          <a class="smart-brand__link" href="<%=url("admin")%>">
+            <span class="smart-brand__title">Smart</span>
+            <span class="smart-brand__subtitle"><%=hostname%></span>
+          </a>
+        </div>
+
+        <nav class="smart-nav" aria-label="Primary navigation">
+          <div class="smart-nav__section">
+            <div class="smart-nav__label">Navigation</div>
+            <ul class="smart-nav__list">
+              <li class="smart-nav__item">
+                <a href="<%=url("admin/status/overview")%>">Overview</a>
+              </li>
+              <li class="smart-nav__item">
+                <a href="<%=url("admin/network/network")%>">Network</a>
+              </li>
+              <li class="smart-nav__item">
+                <a href="<%=url("admin/system/system")%>">System</a>
+              </li>
+              <li class="smart-nav__item">
+                <a href="<%=url("admin/services")%>">Services</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </aside>
+
+    <div class="smart-backdrop" id="smart-backdrop"></div>
+
+    <div class="smart-main">
+      <header class="smart-topbar">
+        <div class="smart-topbar__left">
+          <button
+            type="button"
+            class="smart-menu-toggle"
+            id="smart-menu-toggle"
+            aria-label="Toggle navigation"
+            aria-controls="smart-sidebar"
+            aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <div class="smart-pagehead">
+            <div class="smart-pagehead__eyebrow">LuCI</div>
+            <h1 class="smart-pagehead__title"><%=title ~= "" and title or "Dashboard"%></h1>
+          </div>
+        </div>
+
+        <div class="smart-topbar__right">
+          <div class="smart-host-badge"><%=hostname%></div>
+        </div>
+      </header>
+
+      <main class="smart-content">
