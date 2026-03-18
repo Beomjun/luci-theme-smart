@@ -8,6 +8,10 @@
 *.swp
 *.swo
 
+# Node modules
+node_modules/
+npm-debug.log*
+
 # IDE user config
 .vscode/
 .idea/
