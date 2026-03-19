@@ -4,6 +4,8 @@
 -#}
 
 {%
+  import * as fs from 'fs';
+
 	let theme_version = 'dev';
 	let version_file = '/www/luci-static/smart/version.txt';
 
@@ -16,7 +18,10 @@
 -%}
 
 		{% if (!blank_page): %}
-		</div>
+        </div>
+      </div>
+    </div>
+
 		<footer class="smart-footer">
 			<span>
 				Powered by

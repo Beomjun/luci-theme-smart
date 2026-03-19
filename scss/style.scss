@@ -1,8 +1,11 @@
-@use "purecss-sass/vendor/assets/stylesheets/purecss";
+// @use "purecss-sass/vendor/assets/stylesheets/purecss";
 @use "base/variables";
 @use "helpers/mixins";
 @use "base/common";
 @use "base/fonts";
+@use "base/typography";
+@use "components/card";
+@use "components/forms";
 @use "components/table";
 @use "layouts/default";
 @use "layouts/mobile";

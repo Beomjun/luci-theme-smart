@@ -1,0 +1,19 @@
+.cbi-map,
+.cbi-section,
+.notice,
+.alert-message,
+.table,
+.table.cbi-section-table {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgb(15 23 42 / 8%);
+}
+
+.cbi-map,
+.cbi-section,
+.notice,
+.alert-message {
+  margin-bottom: 20px;
+  padding: 20px;
+}

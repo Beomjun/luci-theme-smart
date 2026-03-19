@@ -1,27 +1,4 @@
 @use "variables" as v;
-@use "../helpers/mixins" as m;
-
-:root {
-  --smart-bg: #{v.$smart-bg};
-  --smart-surface: #{v.$smart-surface};
-  --smart-surface-soft: #{v.$smart-surface-soft};
-  --smart-border: #{v.$smart-border};
-  --smart-text: #{v.$smart-text};
-  --smart-text-muted: #{v.$smart-text-muted};
-  --smart-primary: #{v.$smart-primary};
-  --smart-primary-soft: #{v.$smart-primary-soft};
-  --smart-sidebar-width: #{v.$sidebar-width};
-  --smart-radius-lg: #{v.$radius-lg};
-  --smart-radius-md: #{v.$radius-md};
-  --smart-radius-sm: #{v.$radius-sm};
-  --smart-shadow: #{v.$smart-shadow};
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
 
 html {
   min-height: 100%;
@@ -57,16 +34,6 @@ textarea {
   font: inherit;
 }
 
-button {
-  cursor: pointer;
-}
-
-input,
-select,
-textarea {
-  min-width: 0;
-}
-
 hr {
   height: 1px;
   margin: v.$space-5 0;
@@ -74,17 +41,86 @@ hr {
   background: v.$smart-border;
 }
 
-code,
-pre {
-  font-family:
-    ui-monospace,
-    sfmono-regular,
-    "SF Mono",
-    menlo,
-    consolas,
-    monospace;
-}
-
 .hidden {
   display: none !important;
+}
+
+#maincontent.container {
+  max-width: 100%;
+  margin: 0;
+  padding: 24px;
+}
+
+.cbi-map,
+.cbi-section,
+.notice,
+.alert-message,
+.table,
+.table.cbi-section-table,
+.main fieldset {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgb(15 23 42 / 8%);
+}
+
+.cbi-map,
+.cbi-section,
+.notice,
+.alert-message {
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.main fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+legend {
+  margin-top: 0;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+h2 {
+  font-size: 1.35rem;
+}
+
+h3 {
+  font-size: 1.05rem;
+}
+
+.cbi-section-descr,
+.cbi-value-description,
+.small,
+small,
+.muted {
+  color: #6b7280;
+}
+
+.notice {
+  border-left: 4px solid #2563eb;
+}
+
+.alert-message.warning,
+.cbi-message-warning {
+  border-left: 4px solid #d97706;
+}
+
+.alert-message,
+.cbi-message-error {
+  border-left: 4px solid #dc2626;
+}
+
+.cbi-message-success {
+  border-left: 4px solid #16a34a;
 }

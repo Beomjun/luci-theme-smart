@@ -2,62 +2,106 @@
 @use "../helpers/mixins" as m;
 
 @include m.tablet {
-  .smart-content {
+  #maincontent.container {
     padding: 20px;
   }
 
+  footer,
   .smart-footer {
     padding: 0 20px 20px;
   }
 }
 
 @include m.mobile {
-  .smart-sidebar {
+  .smart-topbar,
+  header.smart-topbar {
+    padding: 0 16px;
+  }
+
+  #smart-shell {
+    display: block;
+    min-height: auto;
+  }
+
+  #smart-sidebar {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    z-index: 260;
+    width: 272px;
+    height: calc(100vh - 64px);
     transform: translateX(-100%);
-    transition: transform 0.22s ease;
+    box-shadow: 0 16px 36px rgb(15 23 42 / 18%);
   }
 
-  .smart-main {
-    margin-left: 0;
-  }
-
-  .smart-menu-toggle {
-    display: inline-flex;
-  }
-
-  .smart-layout.is-sidebar-open .smart-sidebar {
+  body.sidebar-open #smart-sidebar {
     transform: translateX(0);
   }
 
-  .smart-backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 25;
-    background: rgb(15 23 42 / 40%);
+  body.sidebar-collapsed #smart-sidebar {
+    width: 272px;
+    flex-basis: 272px;
+    padding: 16px 12px;
   }
 
-  .smart-layout.is-sidebar-open .smart-backdrop {
-    display: block;
+  body.sidebar-collapsed #topmenu > li > a,
+  body.sidebar-collapsed #topmenu > li > span {
+    justify-content: flex-start;
+    padding: 0 14px;
+    text-indent: 0;
   }
 
-  .smart-topbar {
-    padding: 14px 16px;
-  }
-
-  .smart-topbar__right {
+  body.sidebar-collapsed #topmenu > li > a::before,
+  body.sidebar-collapsed #topmenu > li > span::before {
     display: none;
   }
 
-  .smart-pagehead__title {
-    font-size: 1.2rem;
+  #smart-sidebar-backdrop {
+    position: fixed;
+    inset: 64px 0 0 0;
+    z-index: 250;
+    background: rgb(15 23 42 / 40%);
+    display: none;
   }
 
-  .smart-content {
+  body.sidebar-open #smart-sidebar-backdrop {
+    display: block;
+  }
+
+  #topmenu > li > ul,
+  #topmenu > li > .dropdown-menu,
+  body.sidebar-collapsed #topmenu > li > ul,
+  body.sidebar-collapsed #topmenu > li > .dropdown-menu {
+    position: static;
+    min-width: 0;
+    margin-top: 6px;
+    padding: 0 0 0 12px;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+
+  #maincontent.container {
     padding: 16px;
   }
 
+  .cbi-map,
+  .cbi-section,
+  .notice,
+  .alert-message,
+  .main fieldset {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  footer,
   .smart-footer {
     flex-direction: column;
+    align-items: flex-start;
     padding: 0 16px 16px;
+  }
+
+  #modemenu {
+    width: 100%;
   }
 }

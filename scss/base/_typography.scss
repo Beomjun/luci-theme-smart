@@ -1,0 +1,31 @@
+@use "variables" as v;
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: v.$font-family-sans;
+}
+
+strong,
+b {
+  font-weight: 700;
+}
+
+code,
+pre {
+  font-family:
+    ui-monospace,
+    sfmono-regular,
+    "SF Mono",
+    menlo,
+    consolas,
+    monospace;
+}
+
+.page-title,
+h1:first-child,
+h2:first-child {
+  letter-spacing: -0.03em;
+}
